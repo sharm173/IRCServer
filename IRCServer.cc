@@ -316,7 +316,7 @@ IRCServer::processRequest( int fd )
 	// Send OK answer
 	//const char * msg =  "OK\n";
 	//write(fd, msg, strlen(msg));
-
+	
 	close(fd);	
 }
 
@@ -347,11 +347,12 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 {
 	// Here add a new user. For now always return OK.
 	
-	if(!llist_exists(&userlist, user)) {
+	if(!llist_exists(&userlist, user) ) {
 	
 	llist_add(&userlist, user, password);
 	        const char * msg =  "OK\r\n";
         write(fd, msg, strlen(msg));
+	llist_save(&userlist, "pwd.ll");
 	}
 	else {
 	const char * msg =  "DENIED\r\n";
@@ -444,6 +445,21 @@ const char * msg =  "DENIED\r\n";
 void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
+
+
+if(llist_checkpwd(&userlist, user, password)) {
+void * rand1;
+LinkedList *  list12;
+        
+//LinkedList list2 = *list1;
+a.find(args, &rand1);
+list12 = (LinkedList*)rand1;
+
+if(!(llist_exists(list12, user))) {
+const char * msg =  "DENIED\r\n";
+        write(fd, msg, strlen(msg));
+}
+
 char *room = (char*)malloc(sizeof(args));
 char * msg = (char*)malloc(sizeof(args));
 
@@ -479,7 +495,12 @@ list1 = (LinkedList*) rand;
 llist_add(list1, user, msg);
 if(llist_number_elements(list1) > 100) 
 	llist_remove_last(list1);
+}
 
+else {
+const char * msg =  "DENIED\r\n";
+        write(fd, msg, strlen(msg));
+}
 }
 
 void

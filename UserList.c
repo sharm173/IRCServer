@@ -232,7 +232,7 @@ e = e->next;
 //
 
 int llist_save(LinkedList * list, char * file_name) {
-FILE * fd = fopen(file_name, "w");
+FILE * fd = fopen(file_name, "a");
 
         if (fd == NULL) {
 
