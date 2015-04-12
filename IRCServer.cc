@@ -216,10 +216,10 @@ IRCServer::processRequest( int fd )
 
 	printf("RECEIVED: %s\n", commandLine);
 
-	printf("The commandLine has the following format:\n");
-	printf("COMMAND <user> <password> <arguments>. See below.\n");
-	printf("You need to separate the commandLine into those components\n");
-	printf("For now, command, user, and password are hardwired.\n");
+//	printf("The commandLine has the following format:\n");
+//	printf("COMMAND <user> <password> <arguments>. See below.\n");
+//	printf("You need to separate the commandLine into those components\n");
+//	printf("For now, command, user, and password are hardwired.\n");
 
 	//const char * command = "ADD-USER";
 	//const char * user = "peter";
@@ -513,7 +513,7 @@ LinkedList * list1;
 b.find(room,&rand);
 
 list1 = (LinkedList*) rand;
-
+printf("%s:\n", room);
 llist_printmsg(list1, lmno);
 }
 
