@@ -525,10 +525,10 @@ void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
 if(llist_checkpwd(&userlist, user, password)) {
-void *rand;
+void * rand;
 LinkedList * list1;
 a.find(args, &rand);
-list1 = (LinkedList*)&rand;
+list1 = (LinkedList*)rand;
 llist_print(list1);
 }
 
