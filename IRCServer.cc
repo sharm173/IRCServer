@@ -528,9 +528,8 @@ if(llist_checkpwd(&userlist, user, password)) {
 void *rand;
 LinkedList * list1;
 a.find(args, &rand);
- 
-list1 = (LinkedList*)rand;
-//llist_print(list1);
+list1 = (LinkedList*)&rand;
+llist_print(list1);
 }
 
 else {
