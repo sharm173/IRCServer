@@ -385,12 +385,12 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 if(llist_checkpwd(&userlist, user, password)) {
 
-LinkedList * roomlist;
-LinkedList  * msglist;
-llist_init(roomlist);
-llist_init(msglist);
-//a.insertItem(args,roomlist);
-//b.insertItem(args, msglist);
+LinkedList  roomlist;
+LinkedList   msglist;
+llist_init(&roomlist);
+llist_init(&msglist);
+a.insertItem(args,(void*)&roomlist);
+b.insertItem(args, (void*)&msglist);
 const char * msg =  "OK\r\n";
         write(fd, msg, strlen(msg));
 }
