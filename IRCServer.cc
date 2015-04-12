@@ -241,7 +241,7 @@ IRCServer::processRequest( int fd )
 	
  	}
 	
-	*a = '\n';
+	*a = '\0';
 	commandLine1++;
 	 
 	char * b = user;
@@ -252,7 +252,7 @@ IRCServer::processRequest( int fd )
          
       	}
 	
-	*b = '\n';
+	*b = '\0';
 	commandLine1++; 
 	
 	char * c = password;
@@ -263,7 +263,7 @@ IRCServer::processRequest( int fd )
         
         }
          
-        *c = '\n';
+        *c = '\0';
         commandLine1++;
 
 	char * d = args;
@@ -274,7 +274,7 @@ IRCServer::processRequest( int fd )
         
         }
          
-        *d = '\n';
+        *d = '\0';
         commandLine1++;
 
 	printf("command=%s\n", command);
