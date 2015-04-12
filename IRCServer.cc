@@ -385,12 +385,12 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 
 if(llist_checkpwd(&userlist, user, password)) {
 
-LinkedList  roomlist;
-LinkedList   msglist;
-llist_init(&roomlist);
-llist_init(&msglist);
-a.insertItem(args,(void*)&roomlist);
-b.insertItem(args, (void*)&msglist);
+LinkedList * roomlist = (LinkedList*)malloc(sizeof(LinkedList));
+LinkedList  * msglist = (LinkedList*)malloc(sizeof(LinkedList));
+llist_init(roomlist);
+llist_init(msglist);
+a.insertItem(args,(void*)roomlist);
+b.insertItem(args, (void*)msglist);
 const char * msg =  "OK\r\n";
         write(fd, msg, strlen(msg));
 }
@@ -526,12 +526,12 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 {
 if(llist_checkpwd(&userlist, user, password)) {
 void * rand;
-LinkedList  list1;
+LinkedList *  list1;
 
 //LinkedList list2 = *list1;
 a.find(args, &rand);
-list1 = *((LinkedList*)rand);
-llist_print(&list1);
+list1 = (LinkedList*)rand;
+llist_print(list1);
 }
 
 else {
