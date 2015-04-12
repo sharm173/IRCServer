@@ -389,8 +389,8 @@ LinkedList * roomlist;
 LinkedList  * msglist;
 llist_init(roomlist);
 llist_init(msglist);
-a.insertItem(args,roomlist);
-b.insertItem(args, msglist);
+//a.insertItem(args,roomlist);
+//b.insertItem(args, msglist);
 const char * msg =  "OK\r\n";
         write(fd, msg, strlen(msg));
 }
