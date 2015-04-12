@@ -459,10 +459,10 @@ while(*args != ' ') {
         
         }   
        
-        *c = '\n';
+        *c = '\0';
         args++;
                 
-while(*args != '\n') {
+while(*args != '\0') {
 
         *d = *args;        
         d++;
@@ -470,7 +470,7 @@ while(*args != '\n') {
 
         }
 
-        *d = '\n';
+        *d = '\0';
 
 void *rand;
 LinkedList * list1;
@@ -506,7 +506,7 @@ while(*args != ' ') {
 
         }
   
-        *c = '\n';
+        *c = '\0';
 
 void *rand;
 LinkedList * list1;
