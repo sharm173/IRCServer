@@ -364,7 +364,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
-void *rand;
+void * rand;
 LinkedList * list1;
 if(a.find(args, &rand) && llist_checkpwd(&userlist, user, password)) {
 list1 = (LinkedList*) rand;
@@ -527,9 +527,11 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
 if(llist_checkpwd(&userlist, user, password)) {
 void * rand;
 LinkedList * list1;
+
+LinkedList list2 = *list1;
 a.find(args, &rand);
 list1 = (LinkedList*)rand;
-llist_print(list1);
+llist_print(&list2);
 }
 
 else {
