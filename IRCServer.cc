@@ -277,10 +277,10 @@ IRCServer::processRequest( int fd )
         *d = '\0';
         commandLine1++;
 
-	printf("command=%s\n", command);
-	printf("user=%s\n", user);
-	printf( "password=%s\n", password );
-	printf("args=%s\n", args);
+//	printf("command=%s\n", command);
+//	printf("user=%s\n", user);
+//	printf( "password=%s\n", password );
+//	printf("args=%s\n", args);
 
 	if (!strcmp(command, "ADD-USER")) {
 		addUser(fd, user, password, args);
