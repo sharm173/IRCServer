@@ -498,7 +498,7 @@ char *room = (char*)malloc(sizeof(args));
 
 char * c = room;
 
-while(*args != ' ') {
+while(*args != '\0') {
 
         *c = *args;
         c++;
@@ -508,13 +508,13 @@ while(*args != ' ') {
   
         *c = '\0';
 
-void *rand;
+void * rand;
 LinkedList * list1;
 b.find(room,&rand);
 
 list1 = (LinkedList*) rand;
 
-llist_printmsg(list1);
+llist_printmsg(list1, lmno);
 }
 
 else {

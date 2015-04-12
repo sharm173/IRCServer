@@ -38,7 +38,7 @@ void llist_print(LinkedList * list) {
 //	printf("}\n");
 }
 
-void llist_printmsg(LinkedList * list) {
+void llist_printmsg(LinkedList * list, int last) {
 
         ListNode * e;
 
@@ -48,15 +48,18 @@ void llist_printmsg(LinkedList * list) {
         }
  
        // printf("{");
-  
+  	int i = 0;
         e = list->head;
         while (e != NULL) {
+	if(i >= last) {
                 printf("%s: %s\n", e->user, e->pwd);
                 e = e->next;
                 if (e!=NULL) {
                       //  printf(", ");
                 }
-        }
+        i++;
+	}
+	}
        // printf("}\n");
 }
 
