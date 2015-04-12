@@ -368,7 +368,7 @@ void *rand;
 LinkedList * list1;
 if(a.find(args, &rand) && llist_checkpwd(&userlist, user, password)) {
 list1 = (LinkedList*) rand;
-llist_add(list1, user, NULL);
+llist_add(list1, user, password);
 const char * msg =  "OK\r\n";
         write(fd, msg, strlen(msg));
 }
