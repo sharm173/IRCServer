@@ -267,7 +267,7 @@ IRCServer::processRequest( int fd )
         commandLine1++;
 
 	char * d = args;
-        while(*commandLine1!= ' ') {
+        while(*commandLine1!= '\0') {
         *d = * commandLine1;
         d++;
         commandLine1++;
@@ -478,6 +478,8 @@ b.find(room,&rand);
 
 list1 = (LinkedList*) rand;
 llist_add(list1, user, msg);
+if(llist_number_elements(list1) > 100) 
+	llist_remove_last(list1);
 
 }
 

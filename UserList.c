@@ -200,7 +200,7 @@ return 1;
 */
 //
 // It returns the number of elements in the list.
-/*
+
 int llist_number_elements(LinkedList * list) {
 ListNode * e;
 e = list -> head;
@@ -217,7 +217,7 @@ e = e->next;
 	return i;
 }
 
-*/
+
 //
 // It saves the list in a file called file_name. The format of the
 // file is as follows:
