@@ -33,7 +33,7 @@ const char * usage =
 #include "UserList.h"
 #include "HashTableVoid.h"
 int QueueLength = 5;
-
+int lewildint = 0;
         LinkedList userlist;
         HashTableVoid a;
         HashTableVoid b;

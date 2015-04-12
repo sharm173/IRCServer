@@ -53,12 +53,13 @@ void llist_printmsg(LinkedList * list, int last) {
         while (e != NULL) {
 	if(i >= last) {
                 printf("%s: %s\n", e->user, e->pwd);
-                e = e->next;
+        	i++;
+		}    
+	    	e = e->next;
                 if (e!=NULL) {
                       //  printf(", ");
                 }
-        i++;
-	}
+        
 	}
        // printf("}\n");
 }
