@@ -66,8 +66,8 @@ void llist_printmsg(LinkedList * list) {
 void llist_add(LinkedList * list,const char *user,const char *pwd) {
 	// Create new node
 	ListNode * n = (ListNode *) malloc(sizeof(ListNode));
-	strcpy(n->user,user);
-	strcpy(n->pwd,pwd);
+	n->user=strdup(user);
+	n->pwd = strdup(pwd);
 	
 	// Add at the beginning of the list
 	n->next = list->head;

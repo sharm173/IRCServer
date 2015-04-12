@@ -350,7 +350,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	
 	if(!llist_exists(&userlist, user)) {
 	
-//	llist_add(&userlist, user, password);
+	llist_add(&userlist, user, password);
 	        const char * msg =  "OK\r\n";
         write(fd, msg, strlen(msg));
 	}
