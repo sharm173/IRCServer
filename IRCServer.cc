@@ -348,16 +348,16 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 {
 	// Here add a new user. For now always return OK.
 	
-//	if(!llist_exists(&userlist, user)) {
-//	
+	if(!llist_exists(&userlist, user)) {
+	
 //	llist_add(&userlist, user, password);
-//	        const char * msg =  "OK\r\n";
-  //      write(fd, msg, strlen(msg));
-//	}
-//	else {
+	        const char * msg =  "OK\r\n";
+        write(fd, msg, strlen(msg));
+	}
+	else {
 	const char * msg =  "DENIED\r\n";
 	write(fd, msg, strlen(msg));
-//	}
+	}
 	return;		
 }
 
