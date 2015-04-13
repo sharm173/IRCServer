@@ -270,11 +270,11 @@ return 0;
 char *user;
 char *pwd;
 
-  fscanf (fd, "%s%s", user, pwd);    
+  fscanf (fd, "%s : %s", user, pwd);    
   while (!feof (fd))
     {  
      llist_add(list, user, pwd);
-      fscanf (fd, "%s%s", user, pwd);      
+      fscanf (fd, "%s : %s", user, pwd);      
     }
 
         fclose(fd);
