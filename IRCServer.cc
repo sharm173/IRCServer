@@ -327,7 +327,7 @@ IRCServer::initialize()
 	//Initialise users
 	
 	llist_init(&userlist);
-	llist_read(&userlist, "pwd.ll");
+	llist_read(&userlist, "pwd.txt");
 	
 	// Initalize message list
 	
@@ -352,7 +352,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	llist_add(&userlist, user, password);
 	        const char * msg =  "OK\r\n";
         write(fd, msg, strlen(msg));
-	llist_save(&userlist, "pwd.ll");
+	llist_save(&userlist, "pwd.txt");
 	}
 	else {
 	const char * msg =  "DENIED\r\n";
