@@ -244,7 +244,7 @@ FILE * fd = fopen(file_name, "a");
 ListNode * e;
 e = list->head;
 while(e != NULL) { 
-fprintf(fd,"%s : %s\n",e->user, e->pwd);
+fprintf(fd,"%s %s\n",e->user, e->pwd);
 e = e -> next;
 }
 
@@ -270,11 +270,13 @@ return 0;
 char *user;
 char *pwd;
 
-  fscanf (fd, "%s : %s", user, pwd);    
+  fscanf (fd, "%s", user);
+fscanf (fd, "%s",  pwd);    
   while (!feof (fd))
     {  
      llist_add(list, user, pwd);
-      fscanf (fd, "%s : %s", user, pwd);      
+        fscanf (fd, "%s", user);     
+fscanf (fd, "%s",  pwd);      
     }
 
         fclose(fd);
