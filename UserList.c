@@ -268,8 +268,8 @@ printf("Err: Could not open file");
 return 0;
 }
  int i = 0;
-char *user;
-char *pwd;
+char *user = (char*) malloc(sizeof(char)*30);
+char *pwd = (char*) malloc(sizeof(char)*30);
 printf("Err: Could open file");
 
 fscanf (fd, "%s", user);
