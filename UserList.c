@@ -272,8 +272,8 @@ char *user;
 char *pwd;
 printf("Err: Could open file");
 
-fscanf (fd, "%s", &user);
-fscanf (fd, "%s",  &pwd);
+fscanf (fd, "%s", user);
+fscanf (fd, "%s", pwd);
 printf("info:%s, %s ", user, pwd);
 /*    
   while (!feof (fd))
