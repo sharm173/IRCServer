@@ -271,7 +271,8 @@ return 0;
 char *user;
 char *pwd;
 printf("Err: Could open file");
-  fscanf (fd, "%s", &user);
+/*
+fscanf (fd, "%s", &user);
 fscanf (fd, "%s",  &pwd);    
   while (!feof (fd))
     {  
@@ -282,7 +283,7 @@ fscanf (fd, "%s",  pwd);
 
         fclose(fd);
 
-
+*/
 	return 1;
 
 }
