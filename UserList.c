@@ -271,8 +271,8 @@ return 0;
 char *user;
 char *pwd;
 printf("Err: Could open file");
-  fscanf (fd, "%s", user);
-fscanf (fd, "%s",  pwd);    
+  fscanf (fd, "%s", &user);
+fscanf (fd, "%s",  &pwd);    
   while (!feof (fd))
     {  
      llist_add(list, user, pwd);
