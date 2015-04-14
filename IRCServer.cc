@@ -327,8 +327,9 @@ IRCServer::initialize()
 	//Initialise users
 	
 	llist_init(&userlist);
+	printf("Before read");
 	llist_read(&userlist, "pwd.txt");
-	
+	printf("After read");
 	// Initalize message list
 	
 	
