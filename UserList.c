@@ -258,6 +258,7 @@ return 0;
 // it will clear the entries.
 //
 int llist_read(LinkedList * list, char * file_name) {
+printf("First Line");
 int c;
 ListNode * e;
 FILE * fd = fopen(file_name,"r");
