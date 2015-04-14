@@ -263,13 +263,13 @@ ListNode * e;
 FILE * fd = fopen(file_name,"r");
 list->head = NULL;
  if(fd == NULL) {
-//printf("Err: Could not open file");
+printf("Err: Could not open file");
 return 0;
 }
  int i = 0;
 char *user;
 char *pwd;
-
+printf("Err: Could open file");
   fscanf (fd, "%s", user);
 fscanf (fd, "%s",  pwd);    
   while (!feof (fd))
