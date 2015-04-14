@@ -258,24 +258,24 @@ return 0;
 // it will clear the entries.
 //
 int llist_read(LinkedList * list, char * file_name) {
-printf("First Line");
+//printf("First Line");
 int c;
 ListNode * e;
 FILE * fd = fopen(file_name,"r");
 list->head = NULL;
  if(fd == NULL) {
-printf("Err: Could not open file");
+//printf("Err: Could not open file");
 return 0;
 }
  int i = 0;
 char *user = (char*) malloc(sizeof(char)*30);
 char *pwd = (char*) malloc(sizeof(char)*30);
-printf("Err: Could open file");
+//printf("Err: Could open file");
 
 fscanf (fd, "%s", user);
 fscanf (fd, "%s", pwd);
-printf("info:%s, %s ", user, pwd);
-/*    
+//printf("info:%s, %s ", user, pwd);
+    
   while (!feof (fd))
     {  
      llist_add(list, user, pwd);
@@ -285,7 +285,7 @@ fscanf (fd, "%s",  pwd);
 
         fclose(fd);
 
-*/
+
 	return 1;
 
 }
