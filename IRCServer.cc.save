@@ -29,11 +29,14 @@ const char * usage =
 #include <string.h>
 #include <stdio.h>
 #include <time.h>
-
 #include "IRCServer.h"
+#include "UserList.h"
 #include "HashTableVoid.h"
-#include "LinkedList.h"
 int QueueLength = 5;
+        LinkedList userlist;
+        HashTableVoid a;
+        HashTableVoid b;
+
 
 int
 IRCServer::open_server_socket(int port) {
@@ -82,9 +85,12 @@ void
 IRCServer::runServer(int port)
 {
 	int masterSocket = open_server_socket(port);
-
+	        //IRCServer ircServer;
+//        LinkedList userlist;
+  //      HashTableVoid a;
+    //    HashTableVoid b;
 	initialize();
-	
+	      
 	while ( 1 ) {
 		
 		// Accept incoming connections
@@ -117,15 +123,9 @@ main( int argc, char ** argv )
 	int port = atoi( argv[1] );
 
 	IRCServer ircServer;
-	
-	struct User {
-	const char * name;
-	const char * password;
-	};
-
-	HashTableVoid h;
-	
-	
+//	LinkedList userlist;
+//	HashTableVoid a;
+//	HashTableVoid b;
 	// It will never return
 	ircServer.runServer(port);
 	
@@ -196,8 +196,7 @@ IRCServer::processRequest( int fd )
 	//
 
 	// Read character by character until a \n is found or the command string is full.
-	while ( commandLineLength < MaxCommandLine &&
-		read( fd, &newChar, 1) > 0 ) {
+	while ( commandLineLength < MaxCommandLine &&	read( fd, &newChar, 1) > 0 ) {
 
 		if (newChar == '\n' && prevChar == '\r') {
 			break;
@@ -216,88 +215,81 @@ IRCServer::processRequest( int fd )
 
 	printf("RECEIVED: %s\n", commandLine);
 
-	printf("The commandLine has the following format:\n");
-	printf("COMMAND <user> <password> <arguments>. See below.\n");
-	printf("You need to separate the commandLine into those components\n");
-	printf("For now, command, user, and password are hardwired.\n");
+//	printf("The commandLine has the following format:\n");
+//	printf("COMMAND <user> <password> <arguments>. See below.\n");
+//	printf("You need to separate the commandLine into those components\n");
+//	printf("For now, command, user, and password are hardwired.\n");
 
-	const char * command = "ADD-USER";
-	const char * user = "peter";
-	const char * password = "spider";
-	const char * args = "";
+	//const char * command = "ADD-USER";
+	//const char * user = "peter";
+	//const char * password = "spider";
+	//const char * args = "";
 
-	command = (char*)malloc(sizeof(commandLine));
-	user = (char*)malloc(sizeof(commandLine));
-	password = (char*)malloc(sizeof(commandLine));
-	args = (char*)malloc(sizeof(commandLine));
-
+	char * command = (char*)malloc(sizeof(commandLine));
+	char * user = (char*)malloc(sizeof(commandLine));
+	char * password = (char*)malloc(sizeof(commandLine));
+	char * args = (char*)malloc(sizeof(commandLine));
+	char * commandLine1 = &commandLine[0];
 	char * a = command;
 
-	while(*commandLine != ' ') {
+	while(*commandLine1 != ' ') {
 	
-	*a = * commandLine;
+	*a = *commandLine1;
 	a++;
-	commandLine++;
+	commandLine1 ++;
 	
  	}
 	
-	*a = '\n';
-	comandLine++;
+	*a = '\0';
+	commandLine1++;
 	 
 	char * b = user;
-	while(*commandLine != ' ') {
-        *b = * commandLine;
+	while(*commandLine1 != ' ') {
+        *b = * commandLine1;
         b++;
-        commandLine++;
+        commandLine1++;
          
       	}
 	
-	*b = '\n';
-	comandLine++; 
+	*b = '\0';
+	commandLine1++; 
 	
 	char * c = password;
-        while(*commandLine != ' ') {
-        *c = * commandLine;
+        while(*commandLine1 != ' ') {
+        *c = * commandLine1;
         c++;
-        commandLine++;
+        commandLine1 ++;
         
         }
          
-        *c = '\n';
-        comandLine++;
+        *c = '\0';
+        commandLine1++;
 
 	char * d = args;
-        while(*commandLine != ' ') {
-        *d = * commandLine;
+        while(*commandLine1!= '\0') {
+        *d = * commandLine1;
         d++;
-        commandLine++;
+        commandLine1++;
         
         }
          
-        *d = '\n';
-        comandLine++;
-/*
-	if(command != NULL && user != NULL && password != NULL && args == NULL) {
-	
-	
-	
-	}
+        *d = '\0';
+        commandLine1++;
 
-	else if(command != NULL && user != NULL && password != NULL && args != NULL) {
-	
-	//split args if multiple         
-	
-	
-        }
-*/
-	printf("command=%s\n", command);
-	printf("user=%s\n", user);
-	printf( "password=%s\n", password );
-	printf("args=%s\n", args);
+//	printf("command=%s\n", command);
+//	printf("user=%s\n", user);
+//	printf( "password=%s\n", password );
+//	printf("args=%s\n", args);
 
 	if (!strcmp(command, "ADD-USER")) {
 		addUser(fd, user, password, args);
 	}
+ 	else if (!strcmp(command, "CREATE-ROOM")) {
+                createRoom(fd, user, password, args);
+        }
+	else if (!strcmp(command, "LIST-ROOMS")) {  
+                listRooms(fd, user, password, args);
+        }
 	else if (!strcmp(command, "ENTER-ROOM")) {
 		enterRoom(fd, user, password, args);
 	}
@@ -314,7 +306,7 @@ IRCServer::processRequest( int fd )
 		getUsersInRoom(fd, user, password, args);
 	}
 	else if (!strcmp(command, "GET-ALL-USERS")) {
-		getAllUsers(fd, user, password, args);
+		getAllUsers(fd, user, password);
 	}
 	else {
 		const char * msg =  "UNKNOWN COMMAND\r\n";
@@ -324,7 +316,7 @@ IRCServer::processRequest( int fd )
 	// Send OK answer
 	//const char * msg =  "OK\n";
 	//write(fd, msg, strlen(msg));
-
+	
 	close(fd);	
 }
 
@@ -332,58 +324,259 @@ void
 IRCServer::initialize()
 {
 	// Open password file
-	// Initialize users in room
-
-
+	//Initialise users
+	
+	llist_init(&userlist);
+//	llist_read(&userlist, "pwd.txt");
+	
 	// Initalize message list
+	
+	
+	
 }
 
 bool
 IRCServer::checkPassword(int fd, const char * user, const char * password) {
 	// Here check the password
 	
-	return true;
+	return llist_checkpwd(&userlist, user, password);
 }
 
 void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
 	// Here add a new user. For now always return OK.
-
-	const char * msg =  "OK\r\n";
+	
+	if(!llist_exists(&userlist, user) ) {
+	
+	llist_add(&userlist, user, password);
+	        const char * msg =  "OK\r\n";
+        write(fd, msg, strlen(msg));
+	llist_save(&userlist, "pwd.txt");
+	}
+	else {
+	const char * msg =  "DENIED\r\n";
 	write(fd, msg, strlen(msg));
-
+	}
 	return;		
 }
 
 void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
+void * rand;
+LinkedList * list1;
+if(a.find(args, &rand) && llist_checkpwd(&userlist, user, password)) {
+list1 = (LinkedList*) rand;
+llist_add(list1, user, password);
+const char * msg =  "OK\r\n";
+        write(fd, msg, strlen(msg));
+}
+
+else {
+const char * msg =  "DENIED\r\n";
+        write(fd, msg, strlen(msg));
+}
+
 }
 
 void
+IRCServer::createRoom(int fd, const char * user, const char * password, const char * args) {
+
+if(llist_checkpwd(&userlist, user, password)) {
+
+LinkedList * roomlist = (LinkedList*)malloc(sizeof(LinkedList));
+LinkedList  * msglist = (LinkedList*)malloc(sizeof(LinkedList));
+llist_init(roomlist);
+llist_init(msglist);
+a.insertItem(args,(void*)roomlist);
+b.insertItem(args, (void*)msglist);
+const char * msg =  "OK\r\n";
+        write(fd, msg, strlen(msg));
+}
+
+else {
+const char * msg =  "DENIED\r\n";
+        write(fd, msg, strlen(msg));
+}
+}
+void
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
+
+if(llist_checkpwd(&userlist, user, password)) {
+
+LinkedList * roomlist;
+void *rand;
+a.find(args, &rand);
+roomlist = (LinkedList*)rand;
+llist_remove(roomlist, user, password);
+const char * msg =  "OK\r\n";
+        write(fd, msg, strlen(msg));
+}
+
+else {
+const char * msg =  "DENIED\r\n";
+        write(fd, msg, strlen(msg));
+}
+}
+
+
+void
+IRCServer::listRooms(int fd, const char * user, const char * password, const char * args) {
+
+if(llist_checkpwd(&userlist, user, password)) {
+HashTableVoidIterator iterator(&a);
+int sum=0;
+  const char * key;
+  void * rand;
+  while (iterator.next(key, rand)) {
+    printf("%s\n", key);
+  }
+}
+
+else {
+const char * msg =  "DENIED\r\n";
+        write(fd, msg, strlen(msg));
+}
+
 }
 
 void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
+
+
+if(llist_checkpwd(&userlist, user, password)) {
+void * rand1;
+LinkedList *  list12;
+        
+//LinkedList list2 = *list1;
+a.find(args, &rand1);
+list12 = (LinkedList*)rand1;
+
+if(!(llist_exists(list12, user))) {
+const char * msg =  "DENIED\r\n";
+        write(fd, msg, strlen(msg));
+}
+
+char *room = (char*)malloc(sizeof(args));
+char * msg = (char*)malloc(sizeof(args));
+
+char * c = room;
+char * d = msg;
+
+while(*args != ' ') {
+        
+        *c = *args;
+        c++;
+        args++;
+        
+        }   
+       
+        *c = '\0';
+        args++;
+                
+while(*args != '\0') {
+
+        *d = *args;        
+        d++;
+        args++;
+
+        }
+
+        *d = '\0';
+
+void *rand;
+LinkedList * list1;
+b.find(room,&rand);
+
+list1 = (LinkedList*) rand;
+llist_add(list1, user, msg);
+if(llist_number_elements(list1) > 100) 
+	llist_remove_last(list1);
+}
+
+else {
+const char * msg =  "DENIED\r\n";
+        write(fd, msg, strlen(msg));
+}
 }
 
 void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {
+if(llist_checkpwd(&userlist, user, password)) {
+int lmno = atoi(args);
+while(*args != ' ') {
+args++;
+}
+
+args++;
+
+char *room = (char*)malloc(sizeof(args));
+
+char * c = room;
+
+while(*args != '\0') {
+
+        *c = *args;
+        c++;
+        args++;
+
+        }
+  
+        *c = '\0';
+
+void * rand;
+LinkedList * list1;
+b.find(room,&rand);
+
+list1 = (LinkedList*) rand;
+printf("%s:\n", room);
+llist_printmsg(list1, lmno);
+}
+
+else {
+const char * msg =  "DENIED\r\n";
+      write(fd, msg, strlen(msg));
+}
 }
 
 void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
+if(llist_checkpwd(&userlist, user, password)) {
+void * rand;
+LinkedList *  list1;
+
+//LinkedList list2 = *list1;
+a.find(args, &rand);
+list1 = (LinkedList*)rand;
+llist_print(list1);
+}
+
+else {
+const char * msg =  "DENIED\r\n";
+      write(fd, msg, strlen(msg));
+}
+
+
 }
 
 void
-IRCServer::getAllUsers(int fd, const char * user, const char * password,const  char * args)
+IRCServer::getAllUsers(int fd, const char * user, const char * password)
 {
+if(llist_checkpwd(&userlist, user, password)) {
+
+llist_print(&userlist);
+
+}
+
+else {
+const char * msg =  "DENIED\r\n";
+      write(fd, msg, strlen(msg));
+}
 
 }
 
