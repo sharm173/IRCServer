@@ -347,6 +347,12 @@ void
 IRCServer::addUser(int fd, const char * user, const char * password, const char * args)
 {
 	// Here add a new user. For now always return OK.
+
+
+	if(!llist_checkpwd(&userlist, user, password)) {
+	const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
+        write(fd, msg, strlen(msg));
+	}
 	
 	if(!llist_exists(&userlist, user) ) {
 	
@@ -388,14 +394,23 @@ const char * msg =  "OK\r\n";
 }
 
 else {
-const char * msg =  "DENIED\r\n";
+        //if(!llist_checkpwd(&userlist, user, password)) {
+        const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
         write(fd, msg, strlen(msg));
+        
+
 }
 
 }
 
 void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args) {
+
+        if(!llist_checkpwd(&userlist, user, password)) {
+        const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
+        write(fd, msg, strlen(msg));
+        }
+
 
 if(llist_checkpwd(&userlist, user, password)) {
 
@@ -417,6 +432,11 @@ const char * msg =  "DENIED\r\n";
 void
 IRCServer::leaveRoom(int fd, const char * user, const char * password, const char * args)
 {
+        if(!llist_checkpwd(&userlist, user, password)) {
+        const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
+        write(fd, msg, strlen(msg));
+        }
+
 
 if(llist_checkpwd(&userlist, user, password)) {
 
@@ -457,6 +477,12 @@ const char * msg =  "DENIED\r\n";
 void
 IRCServer::listRooms(int fd, const char * user, const char * password, const char * args) {
 
+        if(!llist_checkpwd(&userlist, user, password)) {
+        const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
+        write(fd, msg, strlen(msg));
+        }
+
+
 if(llist_checkpwd(&userlist, user, password)) {
 HashTableVoidIterator iterator(&a);
 int sum=0;
@@ -477,6 +503,10 @@ const char * msg =  "DENIED\r\n";
 void
 IRCServer::sendMessage(int fd, const char * user, const char * password, const char * args)
 {
+        if(!llist_checkpwd(&userlist, user, password)) {
+        const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
+        write(fd, msg, strlen(msg));
+        }
 
 
 if(llist_checkpwd(&userlist, user, password)) {
@@ -577,6 +607,13 @@ const char * msg =  "DENIED\r\n";
 void
 IRCServer::getMessages(int fd, const char * user, const char * password, const char * args)
 {
+
+        if(!llist_checkpwd(&userlist, user, password)) {
+        const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
+        write(fd, msg, strlen(msg));
+        }
+
+
 if(llist_checkpwd(&userlist, user, password)) {
 int lmno = atoi(args);
 while(*args != ' ') {
@@ -632,6 +669,11 @@ const char * msg =  "DENIED\r\n";
 void
 IRCServer::getUsersInRoom(int fd, const char * user, const char * password, const char * args)
 {
+        if(!llist_checkpwd(&userlist, user, password)) {
+        const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
+        write(fd, msg, strlen(msg));
+        }
+
 if(llist_checkpwd(&userlist, user, password)) {
 void * rand;
 LinkedList *  list1;
@@ -654,6 +696,11 @@ const char * msg =  "DENIED\r\n";
 void
 IRCServer::getAllUsers(int fd, const char * user, const char * password)
 {
+        if(!llist_checkpwd(&userlist, user, password)) {
+        const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
+        write(fd, msg, strlen(msg));
+        }
+
 if(llist_checkpwd(&userlist, user, password)) {
 llist_sort(&userlist);
 llist_print(&userlist, fd);
