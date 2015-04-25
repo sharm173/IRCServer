@@ -167,7 +167,7 @@ return 1;
 }
 while (e -> next != NULL) {
  
-    if(strcmp(((e->next)->user), user)) {
+    if(strcmp(((e->next)->user), user) == 0) {
       if(e->next->next == NULL) {
 e->next = NULL;
 return 1;
