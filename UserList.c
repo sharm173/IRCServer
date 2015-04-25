@@ -312,7 +312,7 @@ strcpy(temp,e->user);
 strcpy(e->user,e->next->user);
 //e->next->user = strdup(temp);
 
-strcpy(e->next->user,e->user);
+strcpy(e->next->user,temp);
 
 free(temp);
 flag = 1;
