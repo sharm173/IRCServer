@@ -290,25 +290,24 @@ fscanf (fd, "%s",  pwd);
 
 }
 
-/*
+
 //
 // It sorts the list. The parameter ascending determines if the
 // order si ascending (1) or descending(0).
 //
-void llist_sort(LinkedList * list, int ascending) {
+void llist_sort(LinkedList * list) {
 ListNode * e;
 e = list->head;
 int flag=0;
 
-if(ascending == 1)      {
-    while(1)       {
+while(1)       {
 flag = 0;
 e = list->head;
 while(e->next != NULL) {
-if(e->value > e->next->value) {
-int temp = e->value;
-e->value = e->next->value;
-e->next->value = temp;
+if(strcmp(e->user, e->next->user) > 0) {
+char * temp = strdup(e->user);
+e->user = strdup(e->next->user);
+e->next->user = strdup(temp);
 flag = 1;
 }
 e = e->next;
@@ -318,8 +317,8 @@ return;
 }
 }
 
-}
 
+/*
 if(ascending == 0) {
     while(1)       {
 flag = 0;
@@ -340,10 +339,10 @@ return;
 
 }
 
-
+*/
 
 }
-*/
+
 //
 // It removes the first entry in the list and puts value in *value.
 // It also frees memory allocated for the node

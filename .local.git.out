@@ -320,3 +320,6 @@ After doing this, you may fix the identity used for this commit with:
  4 files changed, 6 insertions(+), 3 deletions(-)
 [master fe3b93d] Make IRCServer
  4 files changed, 5 insertions(+), 3 deletions(-)
+[master 272385d] Make IRCServer
+ 4 files changed, 11 insertions(+), 9 deletions(-)
+ rewrite IRCServer (64%)
