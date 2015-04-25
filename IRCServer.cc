@@ -367,7 +367,19 @@ IRCServer::enterRoom(int fd, const char * user, const char * password, const cha
 {
 void * rand;
 LinkedList * list1;
-if(a.find(args, &rand) && llist_checkpwd(&userlist, user, password)) {
+
+//new code
+
+if(a.find(args, &rand)) {
+const char * msg =  "ERROR (No Room)\r\n";
+        write(fd, msg, strlen(msg));
+return;
+
+
+}
+
+//new code
+if(llist_checkpwd(&userlist, user, password)) {
 list1 = (LinkedList*) rand;
 llist_add(list1, user, password);
 const char * msg =  "OK\r\n";
@@ -585,6 +597,21 @@ while(*args != '\0') {
 void * rand;
 LinkedList * list1;
 b.find(room,&rand);
+
+//new code
+void * rand123;
+LinkedList *  list123;
+
+//LinkedList list2 = *list1;
+a.find(room, &rand123);
+list123 = (LinkedList*)rand123;
+if(!llist_exists(list123, user)) {
+const char * msg =  "ERROR (User not in room)\r\n";
+        write(fd, msg, strlen(msg));
+return;
+}
+
+//newcodeend
 
 list1 = (LinkedList*) rand;
 printf("%s:\n", room);
