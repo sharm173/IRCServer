@@ -62,7 +62,9 @@ void llist_printmsg(LinkedList * list, int last, int fd) {
             //    printf("%s: %s\n", e->user, e->pwd);
 	
 //	fprintf(fd, "%d %s %s\r\n",i,e->user,e->pwd);
-//	write(fd,&i,sizeof(i));
+	char *ints = (char*)malloc(sizeof(i) + 1);
+	sprintf(ints,"%d", i);
+	write(fd,ints,strlen(ints));
 	write(fd," ", 1);
 	write(fd, e->user, strlen(e->user));
 	write(fd," ", 1);
