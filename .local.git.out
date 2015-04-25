@@ -599,3 +599,8 @@ After doing this, you may fix the identity used for this commit with:
  rewrite talk-server.out (100%)
 [master 515ebf1] Make IRCServer
  4 files changed, 5 insertions(+), 2 deletions(-)
+[master bc5c15f] Make IRCServer
+ 4 files changed, 2 insertions(+), 16 deletions(-)
+ delete mode 100644 diff.out
+ delete mode 100644 prog.out
+ delete mode 100644 talk-server.out
