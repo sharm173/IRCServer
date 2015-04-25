@@ -513,8 +513,8 @@ const char * msg =  "DENIED\r\n";
 
 */
 
-char *room = (char*)malloc(sizeof(args));
-char * msg = (char*)malloc(sizeof(args));
+char *room = (char*)malloc(strlen(args)*sizeof(char));
+char * msg = (char*)malloc(strlen(args)*sizeof(char));
 
 char * c = room;
 char * d = msg;
