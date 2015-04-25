@@ -467,6 +467,25 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
 
 
 if(llist_checkpwd(&userlist, user, password)) {
+/*
+//new code
+void * rand12;
+LinkedList *  list12;
+        
+//LinkedList list2 = *list1;
+a.find(args, &rand12);
+list12 = (LinkedList*)rand12;
+if(llist_exists(list12, user)) {
+const char * msg =  "ERROR (No user in room)\r\n";
+        write(fd, msg, strlen(msg));
+return;
+}
+ 
+
+//newcodeend
+*/
+
+
 void * rand1;
 LinkedList *  list12;
         
