@@ -322,6 +322,19 @@ strcpy(e->user,e->next->user);
 strcpy(e->next->user,temp);
 
 free(temp);
+
+char * temp1 = (char*)malloc((strlen(e->pwd)+1)*sizeof(char));
+strcpy(temp1,e->pwd);
+//e->user = strdup(e->next->user);
+ 
+strcpy(e->pwd,e->next->pwd);
+//e->next->user = strdup(temp);
+ 
+strcpy(e->next->pwd,temp1);
+   
+free(temp1);
+
+
 flag = 1;
 }
 e = e->next;

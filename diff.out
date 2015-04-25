@@ -1,0 +1,17 @@
+31c31
+< DENIED
+---
+> OK
+35a36
+> aquaman
+42c43
+< DENIED
+---
+> OK
+47c48,51
+< DENIED
+---
+> aquaman
+> mary
+> superman
+> 
