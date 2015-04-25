@@ -525,6 +525,22 @@ while(*args != '\0') {
 
         *d = '\0';
 
+//new code
+void * rand123;
+LinkedList *  list123;
+
+//LinkedList list2 = *list1;
+a.find(room, &rand123);
+list123 = (LinkedList*)rand123;
+if(!llist_exists(list123, user)) {
+const char * msg =  "ERROR (User not in room)\r\n";
+        write(fd, msg, strlen(msg));
+return;
+}
+         
+//newcodeend
+
+
 void *rand;
 LinkedList * list1;
 b.find(room,&rand);

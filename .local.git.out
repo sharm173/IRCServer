@@ -343,3 +343,11 @@ After doing this, you may fix the identity used for this commit with:
  create mode 100755 test-server9.sh
 [master 8cdc279] Make IRCServer
  1 file changed, 14 insertions(+)
+[master 08aa587] 12 of 62
+ 10 files changed, 309 insertions(+)
+ create mode 100644 diff.out
+ create mode 100644 password.txt
+ create mode 100644 prog.org.out
+ create mode 100644 prog.out
+ create mode 100644 talk-server.out
+ create mode 100644 total.out
