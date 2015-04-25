@@ -434,3 +434,8 @@ After doing this, you may fix the identity used for this commit with:
  delete mode 100644 talk-server.out
 [master f04990d] Make IRCServer
  3 files changed, 7 insertions(+), 5 deletions(-)
+[master 0ae8c99] Make IRCServer
+ 9 files changed, 13 insertions(+), 3 deletions(-)
+ create mode 100644 diff.out
+ create mode 100644 prog.out
+ create mode 100644 talk-server.out
