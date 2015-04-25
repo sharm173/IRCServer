@@ -561,7 +561,7 @@ LinkedList * list1;
 b.find(room,&rand);
 
 list1 = (LinkedList*) rand;
-llist_add(list1, user, msg);
+llist_insert_last(list1, user, msg);
 const char * msg1 =  "OK\r\n";
         write(fd, msg1, strlen(msg1));
 if(llist_number_elements(list1) > 100) 

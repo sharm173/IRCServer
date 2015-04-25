@@ -440,14 +440,15 @@ void llist_insert_first(LinkedList * list, int value) {
 // Insert a value at the end of the list.
 // There is no check if the name already exists. The entry is added
 // at the end of the list.
-/*
-void llist_insert_last(LinkedList * list, int value) {
+
+void llist_insert_last(LinkedList * list, const char *user, const char *pwd) {
 ListNode * n = (ListNode *) malloc(sizeof(ListNode));
-        n->value = value;
+        n->user = strdup(user);
+	n->pwd = strdup(pwd);
 ListNode * e;
 e = list->head;
 if (e == NULL) {
-llist_add(list, value);
+llist_add(list, user,pwd);
 }
 else {
 while(e->next != NULL) {
@@ -457,7 +458,7 @@ e->next = n;
 n->next = NULL;
 }
 }
-*/
+
 //
 // Clear all elements in the list and free the nodes
 /*

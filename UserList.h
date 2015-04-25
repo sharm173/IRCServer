@@ -33,4 +33,4 @@ void llist_sort(LinkedList * list);
 //int llist_remove_first(LinkedList * list);
 int llist_remove_last(LinkedList * list);
 //void llist_insert_first(LinkedList * list, char *user, char*pwd);
-//void llist_insert_last(LinkedList * list, char *string);
+void llist_insert_last(LinkedList * list, const char *user, const char *pwd);
