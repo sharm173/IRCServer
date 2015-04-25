@@ -305,9 +305,16 @@ flag = 0;
 e = list->head;
 while(e->next != NULL) {
 if(strcmp(e->user, e->next->user) > 0) {
-char * temp = strdup(e->user);
-e->user = strdup(e->next->user);
-e->next->user = strdup(temp);
+char * temp = (char*)malloc((strlen(e->user)+1)*sizeof(char));
+strcpy(temp,e->user);
+//e->user = strdup(e->next->user);
+
+strcpy(e->user,e->next->user);
+//e->next->user = strdup(temp);
+
+strcpy(e->next->user,e->user);
+
+free(temp);
 flag = 1;
 }
 e = e->next;
