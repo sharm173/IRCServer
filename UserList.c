@@ -40,6 +40,8 @@ void llist_print(LinkedList * list, int fd) {
 		//	printf(", ");
 		}
 	}
+	        const char * msg =  "\r\n";
+        write(fd, msg, strlen(msg));
 //	printf("}\n");
 }
 
