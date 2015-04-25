@@ -532,3 +532,5 @@ After doing this, you may fix the identity used for this commit with:
  delete mode 100644 diff.out
  delete mode 100644 prog.out
  delete mode 100644 talk-server.out
+[master eec122a] Make IRCServer
+ 2 files changed, 8 insertions(+), 7 deletions(-)

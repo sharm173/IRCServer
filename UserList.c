@@ -84,6 +84,8 @@ void llist_printmsg(LinkedList * list, int last, int fd) {
         
 	}
        // printf("}\n");
+                const char * msg =  "\r\n";
+        write(fd, msg, strlen(msg));
 }
 
 //
