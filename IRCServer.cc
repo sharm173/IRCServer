@@ -431,7 +431,7 @@ LinkedList *  list1;
 //LinkedList list2 = *list1;
 a.find(args, &rand1);
 list1 = (LinkedList*)rand1;
-if(llist_exists(list1, user)) {
+if(!llist_exists(list1, user)) {
 const char * msg =  "ERROR (No user in room)\r\n";
         write(fd, msg, strlen(msg));
 return;

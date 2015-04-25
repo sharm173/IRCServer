@@ -1,0 +1,12 @@
+56c56
+< ERROR (No user in room)
+---
+> OK
+61d60
+< aquaman
+69c68
+< OK
+---
+> ERROR (No user in room)
+74d72
+< aquaman
