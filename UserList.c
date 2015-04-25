@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "UserList.h"
 
 //
@@ -16,7 +17,7 @@ void llist_init(LinkedList * list)
 // It prints the elements in the list in the form:
 // 4, 6, 2, 3, 8,7
 //
-void llist_print(LinkedList * list) {
+void llist_print(LinkedList * list, int fd) {
 	
 	ListNode * e;
 
@@ -29,7 +30,11 @@ void llist_print(LinkedList * list) {
 
 	e = list->head;
 	while (e != NULL) {
-		printf("%s\n", e->user);
+	//	printf("%s\n", e->user);
+//	const char * msg =  "DENIED\r\n";
+      write(fd, e->user, strlen(e->user));
+	const char * msg =  "\r\n";
+	write(fd, msg, strlen(msg));
 		e = e->next;
 		if (e!=NULL) {
 		//	printf(", ");

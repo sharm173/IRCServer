@@ -636,7 +636,7 @@ LinkedList *  list1;
 a.find(args, &rand);
 list1 = (LinkedList*)rand;
 llist_sort(list1);
-llist_print(list1);
+llist_print(list1, fd);
 }
 
 else {
@@ -651,8 +651,8 @@ void
 IRCServer::getAllUsers(int fd, const char * user, const char * password)
 {
 if(llist_checkpwd(&userlist, user, password)) {
-//llist_sort(&userlist);
-llist_print(&userlist);
+llist_sort(&userlist);
+llist_print(&userlist, fd);
 
 }
 
