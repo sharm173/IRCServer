@@ -157,13 +157,22 @@ if(!llist_checkpwd(list, user, pwd))
 ListNode * e;
 e = list->head;
 if(strcmp((e->user),user) == 0) {
+if(e->next == NULL) {
+list->head == NULL;
+return 1;
+}
+
 list->head = e-> next;
 return 1;
 }
 while (e -> next != NULL) {
  
     if(strcmp(((e->next)->user), user)) {
-       e->next = e->next->next;
+      if(e->next->next == NULL) {
+e->next = NULL;
+return 1;
+}
+	 e->next = e->next->next;
        return 1;
 }
                 e = e->next;
