@@ -411,6 +411,24 @@ LinkedList * roomlist;
 void *rand;
 a.find(args, &rand);
 roomlist = (LinkedList*)rand;
+//new code
+void * rand1;
+LinkedList *  list1;
+        
+//LinkedList list2 = *list1;
+a.find(args, &rand1);
+list1 = (LinkedList*)rand1;
+if(llist_exists(list1, user)) {
+const char * msg =  "ERROR (No user in room)\r\n";
+        write(fd, msg, strlen(msg));
+return;
+}
+
+
+//newcodeend
+
+
+
 llist_remove(roomlist, user, password);
 const char * msg =  "OK\r\n";
         write(fd, msg, strlen(msg));
@@ -554,6 +572,7 @@ LinkedList *  list1;
 //LinkedList list2 = *list1;
 a.find(args, &rand);
 list1 = (LinkedList*)rand;
+llist_sort(list1);
 llist_print(list1);
 }
 
@@ -569,7 +588,7 @@ void
 IRCServer::getAllUsers(int fd, const char * user, const char * password)
 {
 if(llist_checkpwd(&userlist, user, password)) {
-
+llist_sort(&userlist);
 llist_print(&userlist);
 
 }

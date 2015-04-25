@@ -27,7 +27,7 @@ int llist_remove(LinkedList * list, const char *user, const char *pwd);
 int llist_number_elements(LinkedList * list);
 int llist_save(LinkedList * list, char * file_name);
 int llist_read(LinkedList * list, char * file_name);
-//void llist_sort(LinkedList * list, int ascending);
+void llist_sort(LinkedList * list);
 //void llist_clear(LinkedList *list);
 
 //int llist_remove_first(LinkedList * list);
