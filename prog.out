@@ -1,0 +1,38 @@
+Start Test 10
+Add Users
+ADD-USER superman clarkkent
+response:
+DENIED
+
+ADD-USER spiderman peterpark
+response:
+DENIED
+
+ADD-USER mary poppins
+response:
+DENIED
+
+Create Room
+CREATE-ROOM superman clarkkent java-programming
+response:
+OK
+
+Create Room
+CREATE-ROOM spiderman peterpark c-programming
+response:
+OK
+
+Enter room
+ENTER-ROOM superman clarkkent python-programming
+response:
+
+Print users in room
+Enter another user
+Print users in room
+Send message
+Send message
+Get messages
+Get messages
+Get messages from 0
+Get messages from 2
+Killing Server
