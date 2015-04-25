@@ -656,7 +656,7 @@ args++;
 
 args++;
 
-char *room = (char*)malloc(sizeof(args));
+char *room = (char*)malloc(strlen(args));
 
 char * c = room;
 
