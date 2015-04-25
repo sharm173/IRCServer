@@ -371,7 +371,7 @@ LinkedList * list1;
 
 //new code
 
-if(a.find(args, &rand)) {
+if(!a.find(args, &rand)) {
 const char * msg =  "ERROR (No Room)\r\n";
         write(fd, msg, strlen(msg));
 return;
