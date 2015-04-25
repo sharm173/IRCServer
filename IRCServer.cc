@@ -498,7 +498,7 @@ return;
 //newcodeend
 */
 
-
+/*
 void * rand1;
 LinkedList *  list12;
         
@@ -510,6 +510,8 @@ if(!(llist_exists(list12, user))) {
 const char * msg =  "DENIED\r\n";
         write(fd, msg, strlen(msg));
 }
+
+*/
 
 char *room = (char*)malloc(sizeof(args));
 char * msg = (char*)malloc(sizeof(args));
