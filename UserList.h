@@ -17,7 +17,7 @@ typedef struct LinkedList LinkedList;
 
 void llist_init(LinkedList * list);
 void llist_print(LinkedList * list, int fd);
-void llist_printmsg(LinkedList * list, int last);
+void llist_printmsg(LinkedList * list, int last, int fd);
 void llist_add(LinkedList * list, const char *user,const char *pwd);
 int llist_exists(LinkedList * list, const char *user);
 int llist_checkpwd(LinkedList * list, const char *user, const char *pwd);

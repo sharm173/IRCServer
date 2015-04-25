@@ -1,4 +1,4 @@
-      //
+        //
 const char * usage =
 "                                                               \n"
 "IRCServer:                                                   \n"
@@ -616,7 +616,7 @@ return;
 
 list1 = (LinkedList*) rand;
 printf("%s:\n", room);
-llist_printmsg(list1, lmno);
+llist_printmsg(list1, lmno, fd);
 }
 
 else {

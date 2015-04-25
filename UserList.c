@@ -45,7 +45,7 @@ void llist_print(LinkedList * list, int fd) {
 //	printf("}\n");
 }
 
-void llist_printmsg(LinkedList * list, int last) {
+void llist_printmsg(LinkedList * list, int last, int fd) {
 
         ListNode * e;
 
@@ -59,7 +59,20 @@ void llist_printmsg(LinkedList * list, int last) {
         e = list->head;
         while (e != NULL) {
 	if(i >= last) {
-                printf("%s: %s\n", e->user, e->pwd);
+            //    printf("%s: %s\n", e->user, e->pwd);
+	
+//	fprintf(fd, "%d %s %s\r\n",i,e->user,e->pwd);
+	write(fd,&i,sizeof(i));
+	write(fd," ", 1);
+	write(fd, e->user, strlen(e->user));
+	write(fd," ", 1);
+	write(fd, e->pwd, strlen(e->pwd));
+	
+//	write(fd, e->user, strlen(e->user));
+        
+	const char * msg =  "\r\n";
+        write(fd, msg, strlen(msg));
+	
 		}    
 		i++;
 	    	e = e->next;
