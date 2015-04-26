@@ -578,7 +578,7 @@ char * msag = (char*)malloc(strlen(args)*sizeof(char));
 char * c = room;
 char * d = msag;
 
-while(*args != ' ') {
+while(*args != ' '|| *args != '\0') {
         
         *c = *args;
         c++;
