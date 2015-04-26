@@ -49,10 +49,10 @@ void llist_printmsg(LinkedList * list, int last, int fd) {
 
         ListNode * e;
 
-        if (list->head == NULL) {
-                printf("EMPTY\n");
-                return;
-        }
+       // if (list->head == NULL) {
+         //       printf("EMPTY\n");
+           //     return;
+       // }
  
        // printf("{");
   	int i = 0;
@@ -87,9 +87,9 @@ void llist_printmsg(LinkedList * list, int last, int fd) {
 
 if(last >= i) {
 //NO-NEW-MESSAGES
-const char * msg =  "NO-NEW-MESSAGES";
+const char * msg =  "NO-NEW-MESSAGES\r\n";
         write(fd, msg, strlen(msg));
-        
+  return;      
 }
   
 
