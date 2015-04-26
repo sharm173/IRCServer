@@ -1,0 +1,24 @@
+5c5
+< ERROR (Wrong password)
+---
+> OK
+9c9
+< ERROR (Wrong password)
+---
+> OK
+13c13
+< ERROR (Wrong password)
+---
+> OK
+17c17
+< ERROR (Wrong password)
+---
+> OK
+22c22,26
+< ERROR (Wrong password)
+---
+> aquaman
+> mary
+> spiderman
+> superman
+> 

@@ -349,11 +349,11 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	// Here add a new user. For now always return OK.
 
 
-	if(!llist_checkpwd(&userlist, user, password)) {
-	const char * msg =  "ERROR (Wrong password)\r\n";
-        write(fd, msg, strlen(msg));
-	return;
-	}
+//	if(!llist_checkpwd(&userlist, user, password)) {
+//	const char * msg =  "ERROR (Wrong password)\r\n";
+  //      write(fd, msg, strlen(msg));
+//	return;
+//	}
 	
 	if(!llist_exists(&userlist, user) ) {
 	
