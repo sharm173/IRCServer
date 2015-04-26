@@ -1,0 +1,48 @@
+30c30
+< ERROR (Wrong Password)
+---
+> ERROR (Wrong password)
+34c34
+< DENIED
+---
+> ERROR (Wrong password)
+44c44
+< ERROR (Wrong Password)
+---
+> ERROR (Wrong password)
+48c48
+< DENIED
+---
+> ERROR (Wrong password)
+53c53
+< ERROR (Wrong Password)
+---
+> ERROR (Wrong password)
+57c57
+< DENIED
+---
+> ERROR (Wrong password)
+62c62
+< ERROR (Wrong Password)
+---
+> ERROR (Wrong password)
+66c66
+< DENIED
+---
+> ERROR (Wrong password)
+71c71
+< ERROR (Wrong Password)
+---
+> ERROR (Wrong password)
+75c75
+< DENIED
+---
+> ERROR (Wrong password)
+80c80
+< ERROR (Wrong Password)
+---
+> ERROR (Wrong password)
+84c84
+< DENIED
+---
+> ERROR (Wrong password)
