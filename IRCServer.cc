@@ -349,7 +349,7 @@ IRCServer::addUser(int fd, const char * user, const char * password, const char 
 	// Here add a new user. For now always return OK.
 
 
-	if(!llist_checkpwd(&userlist, user, password) && llist_exists(&userlist, user)) {
+	if(!llist_checkpwd(&userlist, user, password)) {
 	const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 	return;
@@ -373,7 +373,7 @@ llist_sort(&userlist);
 void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
-if(!llist_checkpwd(&userlist, user, password) && llist_exists(&userlist, user)) {
+if(!llist_checkpwd(&userlist, user, password)) {
         const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 return;
@@ -412,7 +412,7 @@ else {
 void
 IRCServer::createRoom(int fd, const char * user, const char * password, const char * args) {
 
-       if(!llist_checkpwd(&userlist, user, password) && llist_exists(&userlist, user)) {
+       if(!llist_checkpwd(&userlist, user, password) ) {
         const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 return;  
@@ -444,7 +444,7 @@ IRCServer::leaveRoom(int fd, const char * user, const char * password, const cha
         //write(fd, msg, strlen(msg));
         //}
 
-if(!llist_checkpwd(&userlist, user, password) && llist_exists(&userlist, user)) {
+if(!llist_checkpwd(&userlist, user, password)) {
         const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 return;  
@@ -495,7 +495,7 @@ IRCServer::listRooms(int fd, const char * user, const char * password, const cha
         //write(fd, msg, strlen(msg));
         //}
 
-if(!llist_checkpwd(&userlist, user, password) && llist_exists(&userlist, user)) {
+if(!llist_checkpwd(&userlist, user, password) ) {
         const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 return;  
@@ -526,7 +526,7 @@ IRCServer::sendMessage(int fd, const char * user, const char * password, const c
         //const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
         //write(fd, msg, strlen(msg));
         //}
-if(!llist_checkpwd(&userlist, user, password) && llist_exists(&userlist, user)) {
+if(!llist_checkpwd(&userlist, user, password)) {
         const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 return;  
@@ -548,7 +548,7 @@ return;
 }
  
 
-if(!llist_checkpwd(&userlist, user, password) && llist_exists(&userlist, user)) {
+if(!llist_checkpwd(&userlist, user, password)) {
         const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 return;  
@@ -641,7 +641,7 @@ IRCServer::getMessages(int fd, const char * user, const char * password, const c
         //const char * msg =  "ERROR (WRONG PASSWORD)\r\n";
         //write(fd, msg, strlen(msg));
         //}
- if(!llist_checkpwd(&userlist, user, password) && llist_exists(&userlist, user)) {
+ if(!llist_checkpwd(&userlist, user, password)) {
         const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 return;  
@@ -708,7 +708,7 @@ IRCServer::getUsersInRoom(int fd, const char * user, const char * password, cons
         //write(fd, msg, strlen(msg));
        // }
 
-if(!llist_checkpwd(&userlist, user, password) && llist_exists(&userlist, user)) {
+if(!llist_checkpwd(&userlist, user, password)) {
         const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 return;  
@@ -741,7 +741,7 @@ IRCServer::getAllUsers(int fd, const char * user, const char * password)
         //write(fd, msg, strlen(msg));
        // }
 
-if(!llist_checkpwd(&userlist, user, password) && llist_exists(&userlist, user)) {
+if(!llist_checkpwd(&userlist, user, password)) {
         const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 return;  
