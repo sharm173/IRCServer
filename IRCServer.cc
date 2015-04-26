@@ -630,7 +630,7 @@ while(*args != ' '&& *args != '\0') {
         *c = '\0';
         args++;
                 
-while(*args != '\0' && *args != ' ') {
+while(*args != '\0') {
 
         *d = *args;        
         d++;
