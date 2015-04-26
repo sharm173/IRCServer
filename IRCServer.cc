@@ -549,8 +549,8 @@ return;
  
 
 if(!llist_checkpwd(&userlist, user, password)) {
-        const char * msg =  "ERROR (Wrong password)\r\n";
-        write(fd, msg, strlen(msg));
+        const char * mesg =  "ERROR (Wrong password)\r\n";
+        write(fd, mesg, strlen(mesg));
 return;  
         } 
 
@@ -573,10 +573,10 @@ const char * msg =  "DENIED\r\n";
 */
 
 char *room = (char*)malloc(strlen(args)*sizeof(char));
-char * msg = (char*)malloc(strlen(args)*sizeof(char));
+char * msag = (char*)malloc(strlen(args)*sizeof(char));
 
 char * c = room;
-char * d = msg;
+char * d = msag;
 
 while(*args != ' ') {
         
@@ -599,10 +599,10 @@ while(*args != '\0') {
 
         *d = '\0';
 
-if(*room == '\0' || *msg == '\0') {
+if(*room == '\0' || *msag == '\0') {
 const char * msg =  "ERROR (User not in room)\r\n";
         write(fd, msg, strlen(msg));
-
+return;
 }
 
 
@@ -626,7 +626,7 @@ LinkedList * list1;
 b.find(room,&rand);
 
 list1 = (LinkedList*) rand;
-llist_insert_last(list1, user, msg);
+llist_insert_last(list1, user, msag);
 const char * msg1 =  "OK\r\n";
         write(fd, msg1, strlen(msg1));
 if(llist_number_elements(list1) > 100) 
