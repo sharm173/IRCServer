@@ -1,7 +1,0 @@
-47a48
-> ERROR (user not in room)
-49a51,54
-> GET-MESSAGES spiderman peterpark 0 java-programming
-> response:
-> ERROR (User not in room)
-> 
