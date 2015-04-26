@@ -23,6 +23,9 @@ void llist_print(LinkedList * list, int fd) {
 
 	if (list->head == NULL) {
 //		printf("EMPTY\n");
+	const char * msg =  "\r\n";
+      write(fd, msg, strlen(msg));
+
 		return;
 	}
 
