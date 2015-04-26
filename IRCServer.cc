@@ -600,7 +600,7 @@ while(*args != '\0') {
         *d = '\0';
 
 if(*room == '\0' || *msag == '\0') {
-const char * msg =  "ERROR (User not in room)\r\n";
+const char * msg =  "ERROR (user not in room)\r\n";
         write(fd, msg, strlen(msg));
 return;
 }
