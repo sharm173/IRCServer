@@ -599,6 +599,13 @@ while(*args != '\0') {
 
         *d = '\0';
 
+if(*room == '\0' || *msg == '\0') {
+const char * msg =  "ERROR (User not in room)\r\n";
+        write(fd, msg, strlen(msg));
+
+}
+
+
 //new code
 void *rand123;
 LinkedList *list123;
