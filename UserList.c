@@ -22,7 +22,7 @@ void llist_print(LinkedList * list, int fd) {
 	ListNode * e;
 
 	if (list->head == NULL) {
-		printf("EMPTY\n");
+//		printf("EMPTY\n");
 		return;
 	}
 
@@ -342,6 +342,11 @@ void llist_sort(LinkedList * list) {
 ListNode * e;
 e = list->head;
 int flag=0;
+
+
+if(e == NULL) {
+return;
+}
 
 while(1)       {
 flag = 0;
