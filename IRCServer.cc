@@ -640,7 +640,7 @@ while(*args != '\0' && *args != ' ') {
 
         *d = '\0';
 
-if(*room == '\0' || *msag == '\0' || *args != '\0') {
+if(*room == '\0' || *msag == '\0') {
 const char * msg =  "ERROR (user not in room)\r\n";
         write(fd, msg, strlen(msg));
 return;
@@ -655,7 +655,7 @@ LinkedList *list123;
 a.find(room, &rand123);
 list123 = (LinkedList*)rand123;
 if(!llist_exists(list123, user)) {
-const char * msg =  "ERROR (User not in room)\r\n";
+const char * msg =  "ERROR (user not in room)\r\n";
         write(fd, msg, strlen(msg));
 return;
 }
