@@ -770,3 +770,10 @@ After doing this, you may fix the identity used for this commit with:
  rewrite total.txt (63%)
 [master 2a41994] Make IRCServer
  3 files changed, 9 insertions(+), 1 deletion(-)
+[master c406deb] Make IRCServer
+ 6 files changed, 2 insertions(+), 218 deletions(-)
+ delete mode 100644 diff.out
+ delete mode 100644 prog.org.out
+ delete mode 100644 prog.out
+ delete mode 100644 talk-server.out
+ delete mode 100644 total.out
