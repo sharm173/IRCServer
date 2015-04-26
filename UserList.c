@@ -58,7 +58,7 @@ void llist_printmsg(LinkedList * list, int last, int fd) {
   	int i = 0;
         e = list->head;
         while (e != NULL) {
-	if(i >= last) {
+	if(i > last) {
             //    printf("%s: %s\n", e->user, e->pwd);
 	
 //	fprintf(fd, "%d %s %s\r\n",i,e->user,e->pwd);
@@ -71,6 +71,14 @@ void llist_printmsg(LinkedList * list, int last, int fd) {
 	write(fd, e->pwd, strlen(e->pwd));
 	
 //	write(fd, e->user, strlen(e->user));
+
+
+if(last >= i) {
+//NO-NEW-MESSAGES
+const char * msg =  "NO-NEW-MESSAGES";
+        write(fd, msg, strlen(msg));
+
+}
         
 	const char * msg =  "\r\n";
         write(fd, msg, strlen(msg));
