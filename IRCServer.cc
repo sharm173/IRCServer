@@ -373,22 +373,28 @@ llist_sort(&userlist);
 void
 IRCServer::enterRoom(int fd, const char * user, const char * password, const char * args)
 {
+if(!llist_checkpwd(&userlist, user, password)) {
+        const char * msg =  "ERROR (Wrong password)\r\n";
+        write(fd, msg, strlen(msg));
+return; 
+        }
+
 void * rand;
 LinkedList * list1;
 if(!a.find(args, &rand)) {
-const char * msg =  "ERROR (No Room)\r\n";
+const char * msg =  "ERROR (No room)\r\n";
         write(fd, msg, strlen(msg));
 return;
 
         
 }
-
+/*
 if(!llist_checkpwd(&userlist, user, password)) {
         const char * msg =  "ERROR (Wrong password)\r\n";
         write(fd, msg, strlen(msg));
 return;
         }
-
+*/
 
 //new code
 void * rand123;
@@ -624,7 +630,7 @@ while(*args != ' '&& *args != '\0') {
         *c = '\0';
         args++;
                 
-while(*args != '\0') {
+while(*args != '\0' && *args != ' ') {
 
         *d = *args;        
         d++;
@@ -634,7 +640,7 @@ while(*args != '\0') {
 
         *d = '\0';
 
-if(*room == '\0' || *msag == '\0') {
+if(*room == '\0' || *msag == '\0' || *args != '\0') {
 const char * msg =  "ERROR (user not in room)\r\n";
         write(fd, msg, strlen(msg));
 return;
