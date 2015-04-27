@@ -550,6 +550,9 @@ int sum=0;
   void * rand;
   while (iterator.next(key, rand)) {
     printf("%s\n", key);
+        const char * msg =  "\r\n";
+        write(fd, key, strlen(key));
+	write(fd, msg, strlen(msg));
   }
 }
 
