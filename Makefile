@@ -8,8 +8,8 @@ HashTableVoidTest: HashTableVoidTest.cc HashTableVoid.cc
 
 IRCServer: IRCServer.cc
 	g++ -g -o IRCServer IRCServer.cc HashTableVoid.cc UserList.c
-	git add -A  >> .local.git.out
-	git commit -a -m "Make IRCServer" >> .local.git.out
+#	git add -A  >> .local.git.out
+#	git commit -a -m "Make IRCServer" >> .local.git.out
 
 clean:
 	rm -f *.out
