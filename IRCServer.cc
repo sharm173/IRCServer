@@ -459,8 +459,8 @@ IRCServer::createRoom(int fd, const char * user, const char * password, const ch
 return;  
         } 
 
-
-if(llist_checkpwd(&userlist, user, password)) {
+void *rand;
+if(llist_checkpwd(&userlist, user, password) && !a.find(args, &rand)) {
 
 LinkedList * roomlist = (LinkedList*)malloc(sizeof(LinkedList));
 LinkedList  * msglist = (LinkedList*)malloc(sizeof(LinkedList));
