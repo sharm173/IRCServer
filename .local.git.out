@@ -851,3 +851,6 @@ After doing this, you may fix the identity used for this commit with:
  create mode 100644 talk-server.out
  create mode 100644 total.out
  rewrite total.txt (63%)
+[master 0543df1] 62 of 62
+ 5 files changed, 29 insertions(+), 19 deletions(-)
+ rewrite total.txt (63%)
